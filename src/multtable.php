@@ -7,58 +7,73 @@ echo '<!DOCTYPE html>
 </head>
 <body>';
 
+//declare boolean variables 
 $bGood2 = 1;
 $bGood = 2;
-
-//NEED TO CHECK IF PARAMETERS ARE INTEGERS 
+$bGood3 = 1;
 
 //check if any parameters are missing
-if(isset($_GET['min-mand'])){
-	$minMand = $_GET["min-mand"];
+if(isset($_GET['min-multiplicand'])){
+	$minMand = $_GET["min-multiplicand"];
 } else{
-	echo "Missing parameter [min-multiplicand]";
+	echo "Missing parameter [min-multiplicand].<br>";
 	$bGood2 = 0;
 }
-if(isset($_GET['max-mand'])){
-	$maxMand = $_GET["max-mand"];
+if(isset($_GET['max-multiplicand'])){
+	$maxMand = $_GET["max-multiplicand"];
 } else{
-	echo "Missing parameter [max-multiplicand]";
+	echo "Missing parameter [max-multiplicand].<br>";
 	$bGood2 = 0;
 }
-if(isset($_GET['min-mper'])){
-	$minMper = $_GET["min-mper"];
+if(isset($_GET['min-multiplier'])){
+	$minMper = $_GET["min-multiplier"];
 } else{
-	echo "Missing parameter [min-multiplier]";
+	echo "Missing parameter [min-multiplier].<br>";
 	$bGood2 = 0;
 }
-if(isset($_GET['max-mper'])){
-	$maxMper = $_GET["max-mper"];
+if(isset($_GET['max-multiplier'])){
+	$maxMper = $_GET["max-multiplier"];
 } else{
-	echo "Missing parameter [max-multiplier]";
+	echo "Missing parameter [max-multiplier].<br>";
 	$bGood2 = 0;
 }
 
 //check if min values are less than or equal to max values 
 function compare ($min1, $max1, $min2, $max2, &$bool) {
 	if(($min1 <= $max1) && ($min2 <= $max2)){
-		echo "<h5>Minimum is less than or equal to max </h5>";
 		$bool = 1;
 	}
 	else{
-		echo "<h5>Your max must be greater than min </h5>";
+		echo "<h5>Minimum larger than maximum.</h5>";
 		$bool = 0;
 	}
 }
-echo "Compare min's and max's: \n";
+//call function to compare minimum's and maximums 
 compare($minMand, $maxMand, $minMper, $maxMper, $bGood);
 
+//check if parameters are integers 
+if(!(ctype_digit($minMand) == 1)){
+	$bGood3 = 0;
+	echo "Min-multiplicand must be an integer.<br>";
+}
+if(!(ctype_digit($maxMand) == 1)){
+	$bGood3 = 0;
+	echo "Max-multiplicand must be an integer.<br>";
+}
+if(!(ctype_digit($minMper) == 1)){
+	$bGood3 = 0;
+	echo "Min-multiplier must be an integer.<br>";
+}
+if(!(ctype_digit($maxMper) == 1)){
+	$bGood3 = 0;
+	echo "Max-multiplier must be an integer.<br>";
+}
+
 //if parameters are good, make multiplication table 
-if(($bGood === 1) && ($bGood2 === 1)){
+if(($bGood === 1) && ($bGood2 === 1) && ($bGood3 === 1)){
 $tall = ($maxMand - $minMand + 2);
-echo "Table height = " . $tall;
 
 $wide = ($maxMper - $minMper + 2);
-echo "Table width = " . $wide;
 
 echo '<table border = "1">';
 echo '<tr>' . '<td>' . '' . '</td>';
@@ -75,22 +90,6 @@ for ($r = $minMand; $r <= $maxMand; $r++){
 }
 echo '<table>';
 }
-
-//$_GET is an array containing variables passed in the URL
-
-echo '<p><h3>GET Variables</h3>
-<p>
-<table border="1">
-<tr>
-<td>Key
-<td>value';
-
-foreach($_GET as $key => $value){
-	echo '<tr><td>' . $key . '<td>' . $value;
-}
-echo '<table>';
-
-//$_POST works exactly the same way except for variables sent in via a POST request
 
 echo '</body>
 </html>';
