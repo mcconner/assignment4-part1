@@ -1,21 +1,31 @@
-<?php 
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
 
+<?php 
+$nameErr = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   if (empty($_POST["name"])) {
+     $nameErr = "Name is required";
+   } else {
+     $name = test_input($_POST["name"]);
+     // check if name only contains letters and whitespace
+     if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+       $nameErr = "Only letters and white space allowed";
+     }
+   }
+}
+?>
+   
 <form id= 'login' action='content1.php' method='post'> 
-<input type='text' name='username' id='username'>
+Username: <input type='text' name='username' id='username' value="<?php echo $name;?>">
 <input type='submit' name='submit' value='Login'>
 </form>
 
-if(session_status() == PHP_SESSION_ACTIVE ){
-	if(isset($_POST['username'])){
-		$_SESSION['username'] = $_POST['username'];
-	}
-	if(!isset($_SESSION['visits'])){
-		$_SESSION['visits'] = 0;
-	}
-	$_SESSION['visits']++;
-	echo "Hi $_SESSION[username], you have visited this page $_SESSION[visits] times \n";
-}
 
-?>
+</body>
+</html>
