@@ -6,26 +6,14 @@
 </head>
 <body>
 
-<?php 
-$nameErr = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   if (empty($_POST["name"])) {
-     $nameErr = "Name is required";
-   } else {
-     $name = test_input($_POST["name"]);
-     // check if name only contains letters and whitespace
-     if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-       $nameErr = "Only letters and white space allowed";
-     }
-   }
-}
-?>
    
-<form id= 'login' action='content1.php' method='post'> 
-Username: <input type='text' name='username' id='username' value="<?php echo $name;?>">
-<input type='submit' name='submit' value='Login'>
+<form  name='login' action='content2.php' method='POST'> 
+<label>Username: </label>
+<input type='text' name='username'>
+<input type='submit' name='login' value='login'>
 </form>
-
 
 </body>
 </html>
+
+
