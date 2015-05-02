@@ -1,0 +1,23 @@
+Start: Tue, 28 Apr 2015 08:00:00 -0700
+End: Tue, 28 Apr 2015 10:30:00 -0700
+Tasks: I started going over the requirements of the assignment, watching lecture videos, and began working on multtable.php.
+
+Start: Tue, 28 Apr 2015 18:30:00 -0700
+End: Tue, 28 Apr 2015 20:00:00 -0700
+Tasks: I continued working on multtable.php. I spent some time searching online about how to best write this code and came up with several things to try.
+
+Start: Wed, 29 Apr 2015 16:00:00 -0700
+End: Wed, 29 Apr 2015 20:00:00 -0700
+Tasks: I worked on multtable.php and tested the code that I had created the day before. After some trial and error, I was able to create a multiplication table and I slowly added in data error checking after that.
+
+Start: Thu, 30 Apr 2015 08:30:00 -0700
+End: Thu, 30 Apr 2015 10:30:00 -0700
+Tasks: I worked on loopback.php. I was able to pass in any number of parameters in the URL successfully. I also created a form to test both GET and POST. Everything seems to be working as expected.
+
+Start: Thu, 30 Apr 2015 18:15:00 -0700
+End: Thu, 30 Apr 2015 22:30:00 -0700
+Tasks: During this period I set up login.php, and got some functionality working in content1.php and content2.php.
+
+Start: Fri, 01 May 2015 21:00:00 -0700
+End: Fri, 01 May 2015 22:20:00 -0700
+Tasks: During this period I worked on login.php, content1.php, and content2.php.
